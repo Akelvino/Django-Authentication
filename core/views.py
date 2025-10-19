@@ -9,4 +9,24 @@ from django.utils import timezone
 from django.urls import reverse
 from .models import *
 
+from .forms import RegisterForm
+
 # Create your views here.
+
+def Home(request):
+    return render(request, 'core/index.html')
+
+def RegisterView(request):
+    if request.method == 'POST':
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Accout created successfully.Login now")
+            return redirect('login')
+    else:
+        form = RegisterForm()
+        
+    return render(request, 'core/register.html',{'form':form})
+
+def LoginView(request):
+    return render(request, 'core/login.html')

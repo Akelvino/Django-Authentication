@@ -1,0 +1,16 @@
+<h1>Register</h1>
+<hr>
+<form action="" method='POST'>
+    {% csrf_token %} 
+    {% if form.errors %}
+        <div style="color: red;">
+            {% for field, errors in form.errors.items %}
+                {% for error in errors %}
+                    <p><strong>{{ error }}</p>
+                {% endfor %}
+            {% endfor %}
+        </div>
+    {% endif %}
+    {{ form.as_p }}
+    <button type="submit">Register</button>
+</form>
