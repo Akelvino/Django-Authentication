@@ -42,7 +42,10 @@ def LoginView(request):
         else:
             messages.error(request, "Invalid credentials")
             return redirect('login')
-        
-        
-        
+            
     return render(request, 'core/login.html')
+
+def LogoutView(request):
+    logout(request)
+    
+    return redirect('login')
