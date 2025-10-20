@@ -7,8 +7,16 @@ class RegisterForm(UserCreationForm):
     last_name = forms.CharField(required=True)
     username = forms.CharField(required=True)
     email = forms.EmailField(required=True)
-    password1 = forms.CharField(required=True)
-    password2 = forms.CharField(required=True)
+    password1 = forms.CharField(
+        label="Password",
+        widget=forms.PasswordInput,
+        required=True
+    )
+    password2 = forms.CharField(
+        label="Confirm Password",
+        widget=forms.PasswordInput,
+        required=True
+    )
     
     class Meta:
         model = User

@@ -1,16 +1,11 @@
 <h1>Register</h1>
-<hr>
-<form action="" method='POST'>
-    {% csrf_token %} 
-    {% if form.errors %}
-        <div style="color: red;">
-            {% for field, errors in form.errors.items %}
-                {% for error in errors %}
-                    <p><strong>{{ error }}</p>
-                {% endfor %}
-            {% endfor %}
-        </div>
-    {% endif %}
-    {{ form.as_p }}
-    <button type="submit">Register</button>
+<hr />
+{% if form.errors %} {% for field in form %} {% for error in field.errors %}
+<p><strong>{{ error }}</strong></p>
+{% endfor %} {% endfor %} {% for error in form.non_field_errors %} <p>{{ error }}</p>
+{% endfor %} {% endif %}
+<form action="" method="POST">
+  {% csrf_token %} {{ form.as_p }}
+  <button type="submit">Register</button>
 </form>
+<p>If you have an account log in <a href="{% url 'login' %}">here</a></p>

@@ -3,3 +3,20 @@
     <p style="color: green;">{{ message }}</p>
   {% endfor %}
 {% endif %}
+
+<form method='POST'>
+  {% csrf_token %}
+  
+  <div>
+    <label>Username</label>
+    <input type='text' name='username' placeholder="Enter your username" >
+  </div>
+  <br>
+  <div>
+    <label>Password</label>
+    <input type='password' name='password' placeholder="Enter your Password" >
+  </div>
+  <br>
+  <button type='submit'>Login</button>
+</form>
+<p>Don't have an account? <a href="{% url 'register' %}">Register here</a></p>
